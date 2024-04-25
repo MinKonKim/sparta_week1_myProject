@@ -1,3 +1,12 @@
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3OWZmNmMxY2VhMDUxMTg3ZTYzMTUzYWQyYzYzY2E5ZCIsInN1YiI6IjY0ZTg1ZmU2NTI1OGFlMDE0ZGYyMjZlOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.LwbMg29luCKo58wfbjsZRD8NXPMkXj3CRD-WwwzGeTk",
+  },
+};
+
 // 검색 폼과 검색 결과를 관리하는 함수
 function setupSearch() {
   let form = document.querySelector(".search_form");
@@ -43,15 +52,6 @@ function renderMovies(movies, container) {
 
 // 초기 영화 목록을 불러오는 함수
 function loadMovies() {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3OWZmNmMxY2VhMDUxMTg3ZTYzMTUzYWQyYzYzY2E5ZCIsInN1YiI6IjY0ZTg1ZmU2NTI1OGFlMDE0ZGYyMjZlOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.LwbMg29luCKo58wfbjsZRD8NXPMkXj3CRD-WwwzGeTk",
-    },
-  };
-
   fetch(
     "https://api.themoviedb.org/3/movie/now_playing?language=ko-KR&page=1",
     options
@@ -65,7 +65,21 @@ function loadMovies() {
     .catch((err) => console.error(err));
 }
 
-// 초기화 함수 실행
+function loadJenres() {
+  fetch("https://api.themoviedb.org/3/genre/movie/list?language=en", options)
+    .then((response) => response.json())
+    .then((response) => {
+      jenres = new Map(response["genres"].map((item) => [item.id, item.name]));
+
+      console.log(jenres);
+    })
+    .catch((err) => console.error(err));
+}
+
+//영화 장르 정보 불러오기
+loadJenres();
+
+//영화 정보 불러오기
 loadMovies();
 // 검색 기능 설정
 setupSearch();

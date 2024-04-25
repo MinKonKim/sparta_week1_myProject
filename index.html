@@ -6,13 +6,19 @@
     <title>내배캠 최고 평점 영화 콜렉션</title>
 
     <link rel="stylesheet" href="./style.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector("h1").addEventListener("click", function () {
+          location.reload(); // 현재 페이지를 새로고침합니다.
+        });
+      });
+    </script>
   </head>
   <body>
     <header>
-      <h1>내배캠 최고 평점 영화 콜렉션</h1>
+      <h1>NEB:FLEX</h1>
     </header>
     <div id="form" class="form">
-      <hr />
       <form class="search_form">
         <label>영화 검색 : </label>
         <input
@@ -22,7 +28,6 @@
         />
         <button type="submit" id="search_button">검색</button>
       </form>
-      <hr />
     </div>
     <section id="movieList" class="movieList">
       <!-- 영화 카드가 들어갈 자리-->

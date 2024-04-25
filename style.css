@@ -11,11 +11,15 @@ header {
   text-align: center;
 }
 h1 {
-  margin: 0;
-  transition: color 0.3s ease, font-size 0.3s ease;
+  font-size: 3em; /* 큰 헤더 폰트 사이즈 설정 */
+  text-shadow: 2px 2px 4px #000; /* 그림자 효과 추가 */
+  letter-spacing: 2px; /* 글자 간격 설정 */
+  transition: letter-spacing 0.75s ease, color 0.3s ease, font-size 0.3s ease;
+  cursor: pointer;
 }
 h1:hover {
   color: #9b3922; /* 호버 시에 텍스트 색상을 빨간색으로 변경합니다. */
+  letter-spacing: 10px;
 }
 .form {
   top: 0;
@@ -40,15 +44,20 @@ h1:hover {
 }
 
 .search_form input[type="text"] {
-  cursor: pointer; /* 마우스 오버 시 커서 모양 변경 */
-  padding: 8px;
-  margin-right: 5px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-right: 10px;
+  width: 200px;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
 }
 .search_form button {
   padding: 15px 6px;
   background-color: #f2613f;
-  border-radius: 5px;
-  color: #0c0c0c;
+  border-radius: 10px;
+  color: white;
   border: none;
   cursor: pointer;
 }
@@ -75,12 +84,11 @@ h1:hover {
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 5;
-  height: 200px;
+  height: 160px;
   margin: 10px;
   position: relative;
   overflow: hidden;
   background-color: #9b3922;
-  /* 호버 시 효과를 부드럽게 만들기 위한 transition */
 
   margin: 10px;
   transition: 0.3s, box-shadow 0.3s;
