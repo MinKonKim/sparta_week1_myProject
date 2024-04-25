@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0c0c0c;
+}
+
+header {
+  background-color: #0c0c0c;
+  color: #f2613f;
+  padding: 20px;
+  text-align: center;
+}
+h1 {
+  margin: 0;
+}
+
+.form {
+  top: 0;
+  text-align: center;
+
+  justify-content: center;
+  align-content: center;
+
+  background-color: #0c0c0c;
+  color: #f2613f;
+}
+.search_form {
+  display: inline-block;
+  margin-top: 5px;
+  margin-left: 25px;
+  width: 100%;
+}
+.search_form label {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.search_form input[type="text"] {
+  cursor: pointer; /* 마우스 오버 시 커서 모양 변경 */
+  padding: 8px;
+  margin-right: 5px;
+}
+.search_form button {
+  padding: 15px 6px;
+  background-color: #f2613f;
+  border-radius: 5px;
+  color: #0c0c0c;
+  border: none;
+  cursor: pointer;
+}
+.search_form button:hover {
+  background-color: #9b3922;
+}
+.search_form input {
+  width: 35%; /* input 필드의 너비를 조절 */
+  margin-right: 10px; /* 버튼과의 간격 조절 */
+}
+.search_form button {
+  width: 50px; /* 버튼의 너비를 조절 */
+}
+
+.movieList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3개의 열을 가로로 나눔 */
+  grid-auto-rows: minmax(100px, auto); /* 세로로 무한정으로 나눔 */
+  grid-gap: 10px; /* 그리드 아이템 사이의 간격 */
+}
+.card {
+  border: 1px solid #9b3922;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  transition: box-shadow 0.3s; /* 호버 시 효과를 부드럽게 만들기 위한 transition */
+  background-color: whitesmoke;
+}
+.card:hover {
+  box-shadow: 0 0 20px #f2613f; /* 호버 시 그림자 효과 강화 */
+}
+
+.card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 보여질 줄 수 */
+  -webkit-box-orient: vertical;
+}
