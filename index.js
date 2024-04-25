@@ -7,14 +7,15 @@ function setupSearch() {
   form.addEventListener("submit", (event) => {
     event.preventDefault(); // 기본 동작 중단
 
-    let searchTerm = input.value.toLowerCase(); // 입력값을 소문자로 변환하여 저장
+    let searchTerm = input.value; // 입력값을 소문자로 변환하여 저장
     let filteredMovies = movies.filter((movie) => {
-      return movie.title.toLowerCase().includes(searchTerm); // 영화 제목에 검색어가 포함되는 경우 필터링
+      return movie.title.includes(searchTerm); // 영화 제목에 검색어가 포함되는 경우 필터링
     });
 
     renderMovies(filteredMovies, movieListDiv); // 필터링된 영화 목록을 보여주는 함수 호출
   });
 }
+
 // 영화 목록을 보여주는 함수
 function renderMovies(movies, container) {
   container.innerHTML = ""; // 기존의 영화 카드를 모두 지우고
@@ -30,14 +31,11 @@ function renderMovies(movies, container) {
       </div>
       <div class="card-content">
         <h2>${movie.title}</h2>
+        <p>개봉일 : ${movie.release_date}</p>
+        <p>평점 : ${Math.floor(movie.vote_average)}/10</p>
         <p>${movie.overview || "정보없음"}</p>
       </div>
     `;
-
-    // 클릭 이벤트 추가
-    movieDiv.addEventListener("click", () => {
-      alert(`영화 id : ${movie.id}`); // 클릭 시 영화 제목이 포함된 알람 띄우기
-    });
 
     container.appendChild(movieDiv);
   });
@@ -61,6 +59,7 @@ function loadMovies() {
     .then((response) => response.json())
     .then((response) => {
       movies = response["results"]; // 영화 목록을 저장
+      console.log(movies);
       renderMovies(movies, document.getElementById("movieList")); // 초기 영화 목록을 보여주는 함수 호출
     })
     .catch((err) => console.error(err));
