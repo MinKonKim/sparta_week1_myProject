@@ -45,7 +45,7 @@ export async function fetch_Jenres() {
   }
 }
 
-// 검색 폼과 검색 결과를 관리하는 함수
+// 검색 결과 가져오기 (수정 및 테스트 완료)
 async function fetch_SearchMovies(keyword) {
   await fetch(
     `${TBDB_URL}/search/movie?query=${keyword}&language=ko-KR&page=1&include_adult=false`,
@@ -58,7 +58,7 @@ async function fetch_SearchMovies(keyword) {
     })
     .catch((err) => console.error(err));
 }
-
+// 검색 폼을 관리하는 함수
 export function handleSearch() {
   const form = document.querySelector(".search_form");
   const input = document.getElementById("search_input");
