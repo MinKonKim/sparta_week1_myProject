@@ -46,20 +46,28 @@ export async function fetch_Jenres() {
 }
 
 // 검색 폼과 검색 결과를 관리하는 함수
+async function fetch_SearchMovies(keyword) {
+  await fetch(
+    `${TBDB_URL}/search/movie?query=${keyword}&language=ko-KR&page=1&include_adult=false`,
+    options
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      let filteredMovies = data.results;
+      displayMovies(filteredMovies);
+    })
+    .catch((err) => console.error(err));
+}
+
 export function handleSearch() {
   const form = document.querySelector(".search_form");
   const input = document.getElementById("search_input");
-  const movieListDiv = document.getElementById("movieList");
 
   form.addEventListener("submit", (event) => {
     event.preventDefault(); // 기본 동작 중단
-
     const searchTerm = input.value;
-    const filteredMovies = movies.filter((movie) => {
-      return movie.title.includes(searchTerm); // 영화 제목에 검색어가 포함되는 경우 필터링
-    });
-
-    displayMovies(filteredMovies, movieListDiv); // 필터링된 영화 목록을 보여주는 함수 호출
+    console.log(input.value);
+    fetch_SearchMovies(searchTerm);
   });
 }
 

@@ -23,12 +23,13 @@ export function createMovieCard(movie) {
 }
 
 // 영화 목록을 랜더링해 주는 함수
-export function displayMovies(movies, container) {
-  container.innerHTML = ""; // 기존의 영화 카드를 모두 지우고
+export function displayMovies(movies) {
+  const movieListDiv = document.getElementById("movieList");
+  movieListDiv.innerHTML = ""; // 기존의 영화 카드를 모두 지우고
 
   movies.forEach((movie) => {
     const movieDiv = createMovieCard(movie);
-    container.appendChild(movieDiv);
+    movieListDiv.appendChild(movieDiv);
   });
 }
 
