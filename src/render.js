@@ -1,6 +1,6 @@
 // ------------------display  and event ------------------------
 
-import { SearchByJenre } from "./fetch.js";
+import { cardClickEvent, jenreBtnClickEvent } from "./eventListener.js";
 
 // 영화 카드를 생성하는 함수
 export function createMovieCard(movie) {
@@ -17,12 +17,8 @@ export function createMovieCard(movie) {
       <p>${movie.overview || "정보없음"}</p>
     </div>
   `;
-  // 카드 클릭 이벤트 리스너 추가
-  movieDiv.addEventListener("click", () => {
-    alert(`
-    영화 id : ${movie.id}
-    영화 제목: ${movie.title}`);
-  });
+  // 카드 클릭 이벤트 처리 함수(eventListener.js)
+  cardClickEvent(movie, movieDiv);
   return movieDiv;
 }
 
@@ -56,9 +52,8 @@ export function displayJenreButtons(jenres, container) {
     btnDiv.innerHTML = `
     <button class="jenre-button">${value}</button>`;
 
-    btnDiv.addEventListener("click", () => {
-      SearchByJenre(key);
-    });
+    // 장르 버튼 클릭 이벤트 처리 함수(eventListener.js)
+    jenreBtnClickEvent(key, btnDiv);
 
     container.appendChild(btnDiv);
   });
